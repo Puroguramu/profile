@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+    integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+    integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous" />
+  <style>
+    .imgcenter {
+      margin: 10px auto;
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      overflow: hidden;
+    }
+
+    hr {
+      width: 100%;
+      height: 10px;
+      background-color: lightsteelblue;
+      border: 0px;
+    }
+    
+    ul {
+      padding-inline-start: 20px;
+    }
+
+    .picdiv {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .picdiv > img {
+      width: 45%;
+    }
+  </style>
+  <title>黃麟翔</title>
+</head>
+
+<body>
+  <div class="container" id="app">
+    <div class="row">
+      <div class="col-12">
+        <div class="row">
+          <div class="imgcenter"><img src="bighead100.jpg" alt="大頭貼" /></div>
+        </div>
+        <div class="row">
+          <div class="col-12" style="display:flex;justify-content:center">
+            <div class="mr-2">
+              <h2><b>{{ name }}</b></h2>
+            </div>
+            <div style="display: flex;justify-content: flex-start;align-items: center;">
+              <a class="mr-2" href="https://www.facebook.com/profile.php?id=100000470628643">
+                <i class="fab fa-facebook"></i>
+              </a>
+              <a class="mr-2" href="https://www.instagram.com/aban_0804/">
+                <i class="fab fa-instagram"></i>
+              </a>
+              <a class="mr-2" href="https://github.com/Puroguramu">
+                <i class="fab fa-github"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12" style="text-align: center;">
+            <a href="mailto:peterh320265@gmail.com">{{ email }}</a>
+          </div>
+        </div>
+        <div class="row" style="display: flex;justify-content: center;align-items: center;">
+          <h6>+886-{{ phone }}</h6>
+        </div>
+        <div class="row mt-2">
+          <div class="col-12">
+            <h2><b>網頁開發技能</b></h2>
+          </div>
+        </div>
+        <div class="row mt-2">
+          <div class="col-12 col-lg-4" v-for="(skill, key) in skills" :key="key">
+            <hr />
+            <div>
+              <div>
+                <h3>{{ skill.title }}</h3>
+              </div>
+              <div class="mt-2">
+                <ul>
+                  <li v-for="(description, key) in skill.descriptions" :key="key">
+                    {{ description }}
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row mt">
+          <div class="col-12">
+            <h2><b>學歷 & 經歷</b></h2>
+          </div>
+        </div>
+        <div class="row mt-2" v-for="(experience, key) in experiences" :key="key">
+          <div class="col-12">
+            <div class="row">
+              <div class="col-lg-5 col-12">
+                <hr>
+              </div>
+            </div>
+          </div>
+          <div class="col-12">
+            <div class="row">
+              <div class="col-12 col-lg-5">
+                <div>
+                  <h2>{{ experience.title }}</h2>
+                </div>
+                <ul>
+                  <li v-for="(awarded, key) in experience.awardeds" :key="key">{{ awarded }}</li>
+                </ul>
+              </div>
+              <div class="col-12 col-lg-7">
+                <div class="picdiv">
+                  <img :src="experience.imgsrc" alt="學校縮圖">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row" style="margin-top:50px;">
+          <div class="col-12">
+            <h2><b>自傳</b></h2>
+          </div>
+        </div>
+        <div class="row">
+          <hr>
+        </div>
+        <div class="row mt-2">
+          <div class="col-12">
+            {{ mydetail }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+    integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous">
+  </script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+    integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous">
+  </script>
+  <script>
+    new Vue({
+      el: "#app",
+      data() {
+        return {
+          name: '黃麟翔',
+          email: 'peterh320265@gmail.com',
+          phone: '932-722-963',
+          skills: [
+            {
+              title: 'HTML & CSS & JavaScript',
+              descriptions: [
+                '熟悉 HTML5 與 CSS3',
+                '熟悉 CSS framework ，常用 Bootstrap 作為使用框架',
+                '熟悉 element-ui',
+                '熟悉 vue-element-template 對於後台開發非常有幫助',
+                '熟悉 響應式網頁 RWD 撰寫以及切板',
+                '熟悉 Vue 框架使用方式',
+                '熟悉 ajax 串接第三方 API，目前已對接過 豪匯、多多、豪寶 等等中國支付平台',
+                '對 SASS 有基礎觀念',
+                '了解 javaScript(ES6) 寫法',
+              ]
+            },
+            {
+              title: 'backend framework & git & mysql',
+              descriptions: [
+                '熟悉 laravel 框架，有過兩年的開發經驗',
+                '熟悉 git 版空操作 可以快速參與團隊合作',
+                '熟悉 mysql 搜尋語言',
+                '使用 doctrine 做為開發根基開發過遊戲後端',
+                '使用 voyager 開發過娛樂層推廣頁面',
+                '對 design pattern 有觀念，會配合隊友的設計方式開發'
+              ]
+            },
+            {
+              title: 'Tools / Development',
+              descriptions: [
+                '熟悉 Vs Code',
+                '熟悉 Dbeaver',
+                '熟悉 postman',
+                '熟悉 redis',
+                '熟悉 Another Redis Desktop Manager',
+                '了解 docker 的基礎設置',
+                '了解 Linux 基礎指令',
+                '了解 git pull 部屬方式',
+                '對 android studio 有基本能力',
+                '對 C# 有基本能力',
+                '對 aws 有基本了解'
+              ]
+            }
+          ],
+          experiences: [
+            {
+              title: '101年就讀基隆商工資處科',
+              awardeds: [
+                '101年校內ACM程式設計比賽第六名',
+                '102年 計算機概論模考第一名',
+                '102年校內ACM程式設計比賽第一名',
+                '103年校際程式設計競賽 基礎組 佳作',
+                '103年校內ACM程式設計比賽第四名',
+                '104年通過電腦軟體應用乙級'
+              ],
+              imgsrc: 'keelung.png'
+            },
+            {
+              title: '105年就讀致理科技大學資管系',
+              awardeds: [
+                '105年通過TQC-OA 辦公軟體應用類中文輸入(新注音) 專業級',
+                '105年通過(MTA)Microsoft Technology Associate: Networking Fundamentals',
+                '105年通過(ICT)Information and Communication Technology Certification 計算機綜合能力國際認證',
+                '106年通過 網際網路標準級 Internet (Core)',
+                '106年通過TQC+ 行動裝置應用程式設計',
+                '107年通過(ITE)資訊專業人員鑑定 -Linux維運管理',
+                '107年通過(MTA)Microsoft Technology Associate: Database Administration Fundamentals'
+              ],
+              imgsrc: 'chihlee.png'
+            }
+          ],
+          mydetail: `
+          我是一個對程式撰寫非常有興趣的工程師，高職時就有參加過許多的程式比賽並獲得名次，到了大學也考取到了許多相關的證照。
+          後來在因緣際會下透過學長介紹來到了一間公司開始打工，從一開始的只會前端，到後來理解了有關後端的框架以及git版本控制，以及各式各樣的設計架構。
+          想要不停地向上爬，達到工程師神人的地步!
+          `
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>
